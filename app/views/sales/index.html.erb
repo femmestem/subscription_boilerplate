@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Email</th>
+      <th>GUID</th>
       <th>Product</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
     <% @sales.each do |sale| %>
       <tr>
         <td><%= sale.email %></td>
+        <td><%= sale.guid %></td>
         <td><%= sale.product %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
