@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
@@ -11,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', '~> 3.4.1'
 gem 'paperclip', '~> 4.2.1'
+gem 'figaro', '~> 1.1.1'
 
 group :development, :test do
   gem 'byebug'
