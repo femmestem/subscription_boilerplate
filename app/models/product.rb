@@ -3,8 +3,8 @@ class Product < ActiveRecord::Base
   has_many :sales
 
   validates_numericality_of :price,
-    greater_than: 0,
-    message: "price must be greater than 0"
+    greater_than: 50,
+    message: "price must be greater than 50 cents"
 
   has_attached_file :file
 
