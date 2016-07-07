@@ -8,14 +8,15 @@ describe TransactionsController, type: :controller do
   after { StripeMock.stop }
 
   describe 'POST #create' do
-    context 'with valid credit card number, exp date, and CVVS code' do
-      it "creates a sale"
-      it "processes the transaction with Stripe"
-      it "sends an order email to the customer"
+    context 'with valid credit card' do
+      it "creates a sale" do
+      end
+      it "is processed by Stripe"
+      it "notifies the customer via email"
       it "redirects to pickup_url(guid: @sale.guid)"
     end
 
-    context 'with an expired credit card' do
+    context 'with expired credit card' do
       it "mocks an expired credit card error" do
         StripeMock.prepare_card_error(:expired_card)
         expect { Stripe::Charge.create(amount: 100, currency: 'usd') }.to raise_error { |e|
@@ -32,7 +33,7 @@ describe TransactionsController, type: :controller do
       end
     end
 
-    context 'with a valid credit card and invalid CVVS/CVC code' do
+    context 'with invalid credit card CVVS/CVC code' do
       it "mocks an invalid CVVS/CVC code error" do
         StripeMock.prepare_card_error(:invalid_cvc)
         expect { Stripe::Charge.create(amount: 100, currency: 'usd') }.to raise_error { |e|
@@ -49,7 +50,7 @@ describe TransactionsController, type: :controller do
       end
     end
 
-    context 'with a credit card that is declined' do
+    context 'with declined credit card' do
       it "mocks a declined card error" do
         StripeMock.prepare_card_error(:card_declined)
         expect { Stripe::Charge.create(amount: 100, currency: 'usd') }.to raise_error { |e|
