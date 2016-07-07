@@ -9,11 +9,35 @@ describe TransactionsController, type: :controller do
 
   describe 'POST #create' do
     context 'with valid credit card' do
-      it "creates a sale" do
+      let(:stripe_charge) do
+        Stripe::Charge.create(
+          amount: demo_product.price,
+          currency: "usd",
+          source: stripe_helper.generate_card_token,
+          description: ""
+        )
       end
-      it "is processed by Stripe"
+      let(:demo_product_sale) do
+        demo_product.sales.create!(
+          email: "",
+          stripe_id: stripe_charge.id
+        )
+      end
+
+      it "creates a sale" do
+        expect(demo_product_sale.id).to_not eq(nil)
+      end
+
+      it "is processed by Stripe" do
+        expect(stripe_charge.id).to_not eq(nil)
+      end
+
       it "notifies the customer via email"
-      it "redirects to pickup_url(guid: @sale.guid)"
+
+      it "redirects to pickup_url(guid: @sale.guid)" do
+        post :create, :permalink => demo_product.permalink
+        expect(response).to redirect_to(pickup_url(guid: Sale.last.guid))
+      end
     end
 
     context 'with expired credit card' do
