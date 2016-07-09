@@ -12,6 +12,8 @@ gem 'devise', '~> 3.4.1'
 gem 'paperclip', '~> 4.2.1'
 gem 'figaro', '~> 1.1.1'
 gem 'stripe'
+gem 'aws-sdk', '< 2.0'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug'
