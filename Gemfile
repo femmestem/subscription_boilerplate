@@ -28,5 +28,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'awesome_print'
+  gem 'rails_best_practices'
+  gem 'brakeman'
 end
 
