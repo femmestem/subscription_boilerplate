@@ -4,11 +4,6 @@
 </p>
 
 <p>
-  <strong>Permalink:</strong>
-  <%= @product.permalink %>
-</p>
-
-<p>
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
@@ -19,9 +14,9 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @product.user %>
+  <%= link_to "Buy", checkout_url(@product.permalink) %>
 </p>
-
+<% if current_user === @product.user %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+<% end %>
