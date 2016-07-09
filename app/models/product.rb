@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
 
   validates_attachment :file,
     presence: true,
-    size: { less_than: 2.megabytes }
+    size: { less_than: 2.megabytes },
     content_type: {
       content_type: [
         "image/jpg",
@@ -19,5 +19,5 @@ class Product < ActiveRecord::Base
         "application/pdf",
         "application/zip"
       ]
-    },
+    }
 end
