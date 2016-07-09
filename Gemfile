@@ -14,6 +14,7 @@ gem 'figaro', '~> 1.1.1'
 gem 'stripe'
 gem 'aws-sdk', '< 2.0'
 gem 'httparty'
+gem 'aasm'
 
 group :development, :test do
   gem 'byebug'
