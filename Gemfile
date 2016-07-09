@@ -27,5 +27,6 @@ group :development do
   gem 'database_cleaner'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'awesome_print'
 end
 
