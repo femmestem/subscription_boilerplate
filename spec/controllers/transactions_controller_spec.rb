@@ -1,7 +1,7 @@
 require 'stripe_mock'
 
 describe TransactionsController, type: :controller do
-  let(:demo_product) { Product.create!(name: "Demo Product", permalink: "demo_link", price: 100) }
+  let(:demo_product) { create(:product) }
   # Using StripeMock doesn't touch Stripe's servers nor the internet!
   let(:stripe_helper) { StripeMock.create_test_helper }
   before { StripeMock.start }

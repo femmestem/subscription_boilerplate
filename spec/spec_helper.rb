@@ -54,6 +54,10 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+  # Include FactoryGirl syntax to simplify calls to factories
+  # Usage: `FactoryGirl.build` called as `build`
+  config.include FactoryGirl::Syntax::Methods
+
   # StripeMock has a switch that allows you to run your test suite against Stripe's live test servers.
   # Usage: `$ rspec -t live`
   if config.filter_manager.inclusions.rules.include?(:live)
