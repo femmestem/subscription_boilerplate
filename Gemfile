@@ -15,6 +15,7 @@ gem 'stripe'
 gem 'aws-sdk', '< 2.0'
 gem 'httparty'
 gem 'aasm'
+gem 'paper_trail', '~> 3.0.6'
 
 group :development, :test do
   gem 'byebug'

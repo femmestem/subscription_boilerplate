@@ -1,6 +1,7 @@
 class Sale < ActiveRecord::Base
   belongs_to :product
   include AASM
+  has_paper_trail
 
   aasm column: 'state' do
     state :pending, initial: true

@@ -124,6 +124,9 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
+    paper_trail (3.0.9)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     paperclip (4.2.4)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -248,6 +251,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+  paper_trail (~> 3.0.6)
   paperclip (~> 4.2.1)
   pg (~> 0.15)
   rails (= 4.2.6)
