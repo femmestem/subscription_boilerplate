@@ -43,7 +43,7 @@ private
         description: self.email
       )
 
-      balance = Stripe.BalanceTransaction.retrieve(charge.balance_transaction)
+      balance = Stripe::BalanceTransaction.retrieve(charge.balance_transaction)
       exp_year = charge.source.exp_year
       exp_month = charge.source.exp_month
 
