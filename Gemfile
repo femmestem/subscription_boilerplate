@@ -19,6 +19,7 @@ gem 'paper_trail', '~> 3.0.6'
 
 group :development, :test do
   gem 'byebug'
+  gem 'pry'
   gem 'factory_girl_rails'
 end
 
