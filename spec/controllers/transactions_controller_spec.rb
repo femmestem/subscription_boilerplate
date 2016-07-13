@@ -23,6 +23,13 @@ describe TransactionsController, type: :controller do
           stripe_id: stripe_charge.id
         )
       end
+      let(:balance_stub) {
+          OpenStruct.new(
+            amount: 150,
+            fee: 465,
+            currency: "usd"
+          )
+        }
 
       it "creates a sale" do
         expect(demo_product_sale.id).to_not eq(nil)
@@ -35,7 +42,9 @@ describe TransactionsController, type: :controller do
       it "notifies the customer via email"
 
       it "redirects to pickup_url(guid: @sale.guid)" do
-        post :create, :permalink => demo_product.permalink
+        token = stripe_helper.generate_card_token
+        allow(Stripe::BalanceTransaction).to receive(:retrieve).and_return(balance_stub)
+        post :create, :permalink => demo_product.permalink, :stripeToken => token
         expect(response).to redirect_to(pickup_url(guid: Sale.last.guid))
       end
     end
